@@ -1,3 +1,4 @@
 # viewer_hop
 
-I am trying to develop a previewer for *.ply files (3D objects) which is supposed to work with clowder.
+viewer_hope is a previewer for *.ply files (3D objects) which should work with clowder when finished.
+Currently it's not functional.
