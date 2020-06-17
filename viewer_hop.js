@@ -1,4 +1,4 @@
-(function (jQuery, Configuration) {
+(function ($, Configuration) {
     var useTab = Configuration.tab;
     var referenceUrl = Configuration.url;
     var confId = Configuration.id;
