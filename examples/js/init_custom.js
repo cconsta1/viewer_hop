@@ -18,23 +18,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 function init3dhop() {
-	if (isIOS()) jQuery('head').append('<meta name="viewport" content="width=device-width">'); //IOS DEVICES CHECK
+	if (isIOS()) $oldjQuery('head').append('<meta name="viewport" content="width=device-width">'); //IOS DEVICES CHECK
 
 	var interval, id, ismousedown;
 	var button = 0;
 
-	jQuery('#toolbar img')
+	$oldjQuery('#toolbar img')
 		.mouseenter(function(e) {
-			id = jQuery(this).attr('id');
-			if(!ismousedown) jQuery(this).css("opacity","0.8");
-			else jQuery(this).css("opacity","1.0");
+			id = $oldjQuery(this).attr('id');
+			if(!ismousedown) $oldjQuery(this).css("opacity","0.8");
+			else $oldjQuery(this).css("opacity","1.0");
 		})
 		.mouseout(function(e) {
 			clearInterval(interval); 
-			jQuery(this).css("opacity","0.5");
+			$oldjQuery(this).css("opacity","0.5");
 		})
 		.mousedown(function(e) {
-			id = jQuery(this).attr('id');
+			id = $oldjQuery(this).attr('id');
 			ismousedown = true;
 			if(e.button==button){
 				actionsToolbar(id);
@@ -46,7 +46,7 @@ function init3dhop() {
 				else {
 					clearInterval(interval); 
 				}
-				jQuery(this).css("opacity","1.0");
+				$oldjQuery(this).css("opacity","1.0");
 				button=0;
 			}
 		})
@@ -54,7 +54,7 @@ function init3dhop() {
 			ismousedown = false;
 			if(e.button==button){
 				clearInterval(interval); 
-				jQuery(this).css("opacity","0.8");
+				$oldjQuery(this).css("opacity","0.8");
 				button=0;
 			}
 		})
@@ -65,46 +65,46 @@ function init3dhop() {
 			button=0;
 		});
 
-	jQuery('.output-table td:has(.output-text,.output-input)').css("border-radius", "5px").css("background-color", "rgba(125,125,125,0.25)");
+	$oldjQuery('.output-table td:has(.output-text,.output-input)').css("border-radius", "5px").css("background-color", "rgba(125,125,125,0.25)");
 
-	jQuery('#3dhop')
+	$oldjQuery('#3dhop')
 		.on('touchstart pointerdown', function(e) {
-			jQuery('#toolbar img').css("opacity","0.5");
+			$oldjQuery('#toolbar img').css("opacity","0.5");
 		})
 		.on('touchend pointerup', function(e) {
 			clearInterval(interval); 
 		})
 		.on('touchmove', function(e) {
 			clearInterval(interval); 
-			jQuery('#toolbar img').css("opacity","0.5");
+			$oldjQuery('#toolbar img').css("opacity","0.5");
 		});
 
-	jQuery('#3dhop:not(#draw-canvas)').on('contextmenu', function(e) { return false; });
+	$oldjQuery('#3dhop:not(#draw-canvas)').on('contextmenu', function(e) { return false; });
 
-	jQuery('#draw-canvas')
+	$oldjQuery('#draw-canvas')
 		.on('contextmenu', function(e) {
 			if (!isMobile()) return false; //MOBILE DEVICES CHECK
 		})
 		.on('touchstart pointerdown', function(e) {
-			jQuery('#toolbar img').css("opacity","0.5");
+			$oldjQuery('#toolbar img').css("opacity","0.5");
 		})
 		.mousedown(function(e) { 
-			jQuery('#toolbar img').css("opacity","0.5"); 
+			$oldjQuery('#toolbar img').css("opacity","0.5"); 
 			if(e.preventDefault) e.preventDefault(); 
 			if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
 			else if (document.selection && document.selection.createRange()!='') document.selection.empty();
 		});
 
-	jQuery(document).on('MSFullscreenChange mozfullscreenchange webkitfullscreenchange', function(e) { //fullscreen handler 
+	$oldjQuery(document).on('MSFullscreenChange mozfullscreenchange webkitfullscreenchange', function(e) { //fullscreen handler 
 		if(!document.msFullscreenElement&&!document.mozFullScreen&&!document.webkitIsFullScreen) exitFullscreen();
 	});
 
 	if (window.navigator.userAgent.indexOf('Trident/') > 0) { //IE fullscreen handler 
-		jQuery('#full').click(function() {enterFullscreen();});
-		jQuery('#full_on').click(function() {exitFullscreen();});
+		$oldjQuery('#full').click(function() {enterFullscreen();});
+		$oldjQuery('#full_on').click(function() {exitFullscreen();});
 	}
 
-	jQuery(window).on('resize', function () {
+	$oldjQuery(window).on('resize', function () {
 		if (!presenter._resizable) return;
 
 		var width, height;
@@ -116,13 +116,13 @@ function init3dhop() {
 		presenter.ui.postDrawEvent();
 	});
 
-	jQuery(window).on('load mouseup touchend pointerup dragend', function() { //focus handler
+	$oldjQuery(window).on('load mouseup touchend pointerup dragend', function() { //focus handler
 		var x = window.scrollX, y = window.scrollY;
-		jQuery('#draw-canvas').focus();
+		$oldjQuery('#draw-canvas').focus();
 		window.scrollTo(x, y);
 	});
 
-	resizeCanvas(jQuery('#3dhop').parent().width(),jQuery('#3dhop').parent().height());
+	resizeCanvas($oldjQuery('#3dhop').parent().width(),$oldjQuery('#3dhop').parent().height());
 
 	anchorPanels();
 
@@ -130,18 +130,18 @@ function init3dhop() {
 }
 
 function set3dhlg() {
-  jQuery('#tdhlg').html("Powered by 3DHOP</br>&nbsp;C.N.R. &nbsp;&ndash;&nbsp; I.S.T.I.");
-  jQuery('#tdhlg').mouseover(function() {
-	 jQuery('#tdhlg').animate({ 
+  $oldjQuery('#tdhlg').html("Powered by 3DHOP</br>&nbsp;C.N.R. &nbsp;&ndash;&nbsp; I.S.T.I.");
+  $oldjQuery('#tdhlg').mouseover(function() {
+	 $oldjQuery('#tdhlg').animate({ 
 		height: "25px"
 	  }, "fast" );
 	 })
 	.mouseout(function() {
-	 jQuery('#tdhlg').animate({ 
+	 $oldjQuery('#tdhlg').animate({ 
 		height: "13px"
 	  }, "slow" );
 	 });
-  jQuery('#tdhlg').click(function() { window.open('http://vcg.isti.cnr.it/3dhop/', '_blank') });
+  $oldjQuery('#tdhlg').click(function() { window.open('http://vcg.isti.cnr.it/3dhop/', '_blank') });
 }
 
 // +++ INTERFACE SWITCHING FUNCTIONS +++ //
@@ -150,14 +150,14 @@ function lightSwitch(on) {
   if(on === undefined) on = presenter.isLightTrackballEnabled();
 
   if(on){
-    jQuery('#light').css("visibility", "hidden");
-    jQuery('#light_on').css("visibility", "visible");
-    jQuery('#lighting_off').css("visibility", "hidden");	//manage lighting combined interface
-    jQuery('#lighting').css("visibility", "visible");	//manage lighting combined interface
+    $oldjQuery('#light').css("visibility", "hidden");
+    $oldjQuery('#light_on').css("visibility", "visible");
+    $oldjQuery('#lighting_off').css("visibility", "hidden");	//manage lighting combined interface
+    $oldjQuery('#lighting').css("visibility", "visible");	//manage lighting combined interface
   }
   else{
-    jQuery('#light_on').css("visibility", "hidden");
-    jQuery('#light').css("visibility", "visible");
+    $oldjQuery('#light_on').css("visibility", "hidden");
+    $oldjQuery('#light').css("visibility", "visible");
   }
 }
 
@@ -165,14 +165,14 @@ function lightingSwitch(on) {
   if(on === undefined) on = presenter.isSceneLightingEnabled();
 
   if(on){
-    jQuery('#lighting_off').css("visibility", "hidden");
-    jQuery('#lighting').css("visibility", "visible");
+    $oldjQuery('#lighting_off').css("visibility", "hidden");
+    $oldjQuery('#lighting').css("visibility", "visible");
   }
   else{
-    jQuery('#lighting').css("visibility", "hidden");
-    jQuery('#lighting_off').css("visibility", "visible");
-    jQuery('#light_on').css("visibility", "hidden");	//manage light combined interface
-    jQuery('#light').css("visibility", "visible");	//manage light combined interface
+    $oldjQuery('#lighting').css("visibility", "hidden");
+    $oldjQuery('#lighting_off').css("visibility", "visible");
+    $oldjQuery('#light_on').css("visibility", "hidden");	//manage light combined interface
+    $oldjQuery('#light').css("visibility", "visible");	//manage light combined interface
   }
 }
 
@@ -180,12 +180,12 @@ function hotspotSwitch(on) {
   if(on === undefined) on = presenter.isSpotVisibilityEnabled();
 
   if(on){
-    jQuery('#hotspot').css("visibility", "hidden");
-    jQuery('#hotspot_on').css("visibility", "visible");
+    $oldjQuery('#hotspot').css("visibility", "hidden");
+    $oldjQuery('#hotspot_on').css("visibility", "visible");
   }
   else{
-    jQuery('#hotspot_on').css("visibility", "hidden");
-    jQuery('#hotspot').css("visibility", "visible");
+    $oldjQuery('#hotspot_on').css("visibility", "hidden");
+    $oldjQuery('#hotspot').css("visibility", "visible");
   }
 }
 
@@ -193,19 +193,19 @@ function pickpointSwitch(on) {
   if(on === undefined) on = presenter.isPickpointModeEnabled();
 
   if(on){  
-    jQuery('#pick').css("visibility", "hidden");
-    jQuery('#pick_on').css("visibility", "visible");
-    jQuery('#pickpoint-box').fadeIn().css("display","table");
-    jQuery('#draw-canvas').css("cursor","crosshair");
+    $oldjQuery('#pick').css("visibility", "hidden");
+    $oldjQuery('#pick_on').css("visibility", "visible");
+    $oldjQuery('#pickpoint-box').fadeIn().css("display","table");
+    $oldjQuery('#draw-canvas').css("cursor","crosshair");
   }
   else{
     if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
     else if (document.selection && document.selection.createRange()!='') document.selection.empty();
-    jQuery('#pick_on').css("visibility", "hidden");
-    jQuery('#pick').css("visibility", "visible");
-    jQuery('#pickpoint-box').css("display","none");
-    jQuery('#pickpoint-output').html("[ 0 , 0 , 0 ]");
-    if (!presenter.isAnyMeasurementEnabled()) jQuery('#draw-canvas').css("cursor","default");
+    $oldjQuery('#pick_on').css("visibility", "hidden");
+    $oldjQuery('#pick').css("visibility", "visible");
+    $oldjQuery('#pickpoint-box').css("display","none");
+    $oldjQuery('#pickpoint-output').html("[ 0 , 0 , 0 ]");
+    if (!presenter.isAnyMeasurementEnabled()) $oldjQuery('#draw-canvas').css("cursor","default");
   }
 }
 
@@ -213,62 +213,62 @@ function measureSwitch(on) {
   if(on === undefined) on = presenter.isMeasurementToolEnabled();
 
   if(on){  
-    jQuery('#measure').css("visibility", "hidden");
-    jQuery('#measure_on').css("visibility", "visible");
-    jQuery('#measure-box').fadeIn().css("display","table");
-    jQuery('#draw-canvas').css("cursor","crosshair");
+    $oldjQuery('#measure').css("visibility", "hidden");
+    $oldjQuery('#measure_on').css("visibility", "visible");
+    $oldjQuery('#measure-box').fadeIn().css("display","table");
+    $oldjQuery('#draw-canvas').css("cursor","crosshair");
   }
   else{
     if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
     else if (document.selection && document.selection.createRange()!='') document.selection.empty();
-    jQuery('#measure_on').css("visibility", "hidden");
-    jQuery('#measure').css("visibility", "visible");
-    jQuery('#measure-box').css("display","none");
-    jQuery('#measure-output').html("0.0");
-    if (!presenter.isAnyMeasurementEnabled()) jQuery('#draw-canvas').css("cursor","default");
+    $oldjQuery('#measure_on').css("visibility", "hidden");
+    $oldjQuery('#measure').css("visibility", "visible");
+    $oldjQuery('#measure-box').css("display","none");
+    $oldjQuery('#measure-output').html("0.0");
+    if (!presenter.isAnyMeasurementEnabled()) $oldjQuery('#draw-canvas').css("cursor","default");
   }
 }
 
 function colorSwitch(on) {
-  if(on === undefined) on = jQuery('#color').css("visibility")=="visible";
+  if(on === undefined) on = $oldjQuery('#color').css("visibility")=="visible";
 
   if(on) {
-	jQuery('#color').css("visibility", "hidden");
-	jQuery('#color_on').css("visibility", "visible");
+	$oldjQuery('#color').css("visibility", "hidden");
+	$oldjQuery('#color_on').css("visibility", "visible");
   }
   else {
-	jQuery('#color_on').css("visibility", "hidden");
-	jQuery('#color').css("visibility", "visible");
+	$oldjQuery('#color_on').css("visibility", "hidden");
+	$oldjQuery('#color').css("visibility", "visible");
   }
 }
 
 function cameraSwitch(on) {
-  if(on === undefined) on = jQuery('#perspective').css("visibility")=="visible";
+  if(on === undefined) on = $oldjQuery('#perspective').css("visibility")=="visible";
 
   if(on){
-    jQuery('#perspective').css("visibility", "hidden");
-    jQuery('#orthographic').css("visibility", "visible");
+    $oldjQuery('#perspective').css("visibility", "hidden");
+    $oldjQuery('#orthographic').css("visibility", "visible");
   }
   else{
-    jQuery('#orthographic').css("visibility", "hidden");
-    jQuery('#perspective').css("visibility", "visible");
+    $oldjQuery('#orthographic').css("visibility", "hidden");
+    $oldjQuery('#perspective').css("visibility", "visible");
   }
 }
 
 function sectiontoolSwitch(on) {
-  if(on === undefined) on = jQuery('#sections').css("visibility")=="visible";
+  if(on === undefined) on = $oldjQuery('#sections').css("visibility")=="visible";
 
   if(on){
-	jQuery('#sections').css("visibility", "hidden");
-	jQuery('#sections_on').css("visibility", "visible");
-	jQuery('#sections-box').fadeIn().css("display","table");
-	jQuery('#xplane, #yplane, #zplane').css("visibility", "visible");
+	$oldjQuery('#sections').css("visibility", "hidden");
+	$oldjQuery('#sections_on').css("visibility", "visible");
+	$oldjQuery('#sections-box').fadeIn().css("display","table");
+	$oldjQuery('#xplane, #yplane, #zplane').css("visibility", "visible");
   }
   else{
-	jQuery('#sections_on').css("visibility", "hidden");
-	jQuery('#sections').css("visibility", "visible");
-	jQuery('#sections-box').css("display","none");
-	jQuery('#sections-box img').css("visibility", "hidden");
+	$oldjQuery('#sections_on').css("visibility", "hidden");
+	$oldjQuery('#sections').css("visibility", "visible");
+	$oldjQuery('#sections-box').css("display","none");
+	$oldjQuery('#sections-box img').css("visibility", "hidden");
 	presenter.setClippingXYZ(0, 0, 0);
   }
 }
@@ -278,7 +278,7 @@ function sectiontoolInit() {
 	presenter.setClippingPointXYZ(0.5, 0.5, 0.5);
 
 	// set sliders 
-	var xplaneSlider = jQuery('#xplaneSlider')[0];
+	var xplaneSlider = $oldjQuery('#xplaneSlider')[0];
 	xplaneSlider.min = 0.0;
 	xplaneSlider.max = 1.0;
 	xplaneSlider.step = 0.01;
@@ -286,7 +286,7 @@ function sectiontoolInit() {
 	xplaneSlider.oninput=function(){ sectionxSwitch(true); presenter.setClippingPointX(this.valueAsNumber);};
 	xplaneSlider.onchange=function(){ sectionxSwitch(true); presenter.setClippingPointX(this.valueAsNumber);};
 
-	var yplaneSlider = jQuery('#yplaneSlider')[0];
+	var yplaneSlider = $oldjQuery('#yplaneSlider')[0];
 	yplaneSlider.min = 0.0;
 	yplaneSlider.max = 1.0;
 	yplaneSlider.step = 0.01;
@@ -294,7 +294,7 @@ function sectiontoolInit() {
 	yplaneSlider.oninput=function(){ sectionySwitch(true); presenter.setClippingPointY(this.valueAsNumber);};
 	yplaneSlider.onchange=function(){ sectionySwitch(true); presenter.setClippingPointY(this.valueAsNumber);};
 
-	var zplaneSlider = jQuery('#zplaneSlider')[0];
+	var zplaneSlider = $oldjQuery('#zplaneSlider')[0];
 	zplaneSlider.min = 0.0;
 	zplaneSlider.max = 1.0;
 	zplaneSlider.step = 0.01;
@@ -303,7 +303,7 @@ function sectiontoolInit() {
 	zplaneSlider.onchange=function(){ sectionzSwitch(true); presenter.setClippingPointZ(this.valueAsNumber);};
 
 	// set checkboxes
-	var xplaneFlip = jQuery('#xplaneFlip')[0];
+	var xplaneFlip = $oldjQuery('#xplaneFlip')[0];
 	xplaneFlip.defaultChecked = false;
 	xplaneFlip.onchange=function(){
 		if(presenter.getClippingX()!=0){
@@ -312,7 +312,7 @@ function sectiontoolInit() {
 		}
 	};
 
-	var yplaneFlip = jQuery('#yplaneFlip')[0];
+	var yplaneFlip = $oldjQuery('#yplaneFlip')[0];
 	yplaneFlip.defaultChecked = false;
 	yplaneFlip.onchange=function(){
 		if(presenter.getClippingY()!=0){
@@ -321,7 +321,7 @@ function sectiontoolInit() {
 		}
 	};
 
-	var zplaneFlip = jQuery('#zplaneFlip')[0];
+	var zplaneFlip = $oldjQuery('#zplaneFlip')[0];
 	zplaneFlip.defaultChecked = false;
 	zplaneFlip.onchange=function(){
 		if(presenter.getClippingZ()!=0){
@@ -330,11 +330,11 @@ function sectiontoolInit() {
 		}
 	};
 	
-	var planesCheck = jQuery('#showPlane')[0];
+	var planesCheck = $oldjQuery('#showPlane')[0];
 	planesCheck.defaultChecked = presenter.getClippingRendermode()[0];
 	planesCheck.onchange = function(){ presenter.setClippingRendermode(this.checked, presenter.getClippingRendermode()[1]); };
 
-	var edgesCheck = jQuery('#showBorder')[0];
+	var edgesCheck = $oldjQuery('#showBorder')[0];
 	edgesCheck.defaultChecked = presenter.getClippingRendermode()[1];
 	edgesCheck.onchange=function(){ presenter.setClippingRendermode(presenter.getClippingRendermode()[0], this.checked); };
 }
@@ -344,30 +344,30 @@ function sectiontoolReset() {
 	presenter.setClippingPointXYZ(0.5, 0.5, 0.5);
 
 	// reset sliders 
-	var xplaneSlider = jQuery('#xplaneSlider')[0];
+	var xplaneSlider = $oldjQuery('#xplaneSlider')[0];
 	xplaneSlider.value = xplaneSlider.defaultValue;
 
-	var yplaneSlider = jQuery('#yplaneSlider')[0];
+	var yplaneSlider = $oldjQuery('#yplaneSlider')[0];
 	yplaneSlider.value = yplaneSlider.defaultValue;
 
-	var zplaneSlider = jQuery('#zplaneSlider')[0]; 
+	var zplaneSlider = $oldjQuery('#zplaneSlider')[0]; 
 	zplaneSlider.value = zplaneSlider.defaultValue;
 
 	// reset checkboxes
-	var xplaneFlip = jQuery('#xplaneFlip')[0];
+	var xplaneFlip = $oldjQuery('#xplaneFlip')[0];
 	xplaneFlip.checked = xplaneFlip.defaultChecked;
 
-	var yplaneFlip = jQuery('#yplaneFlip')[0];
+	var yplaneFlip = $oldjQuery('#yplaneFlip')[0];
 	yplaneFlip.checked = xplaneFlip.defaultChecked;
 
-	var zplaneFlip = jQuery('#zplaneFlip')[0];
+	var zplaneFlip = $oldjQuery('#zplaneFlip')[0];
 	zplaneFlip.checked = xplaneFlip.defaultChecked;
 
-	var planesCheck = jQuery('#showPlane')[0];
+	var planesCheck = $oldjQuery('#showPlane')[0];
 	planesCheck.checked = planesCheck.defaultChecked;
 	presenter.setClippingRendermode(planesCheck.checked, presenter.getClippingRendermode()[1]);
 
-	var edgesCheck = jQuery('#showBorder')[0];
+	var edgesCheck = $oldjQuery('#showBorder')[0];
 	edgesCheck.checked = edgesCheck.defaultChecked;
 	presenter.setClippingRendermode(presenter.getClippingRendermode()[0], edgesCheck.checked);
 }
@@ -376,15 +376,15 @@ function sectionxSwitch(on) {
   if(on === undefined) on = (presenter.getClippingX()==0);
 
 	if(on){
-		jQuery('#xplane').css("visibility", "hidden");
-		jQuery('#xplane_on').css("visibility", "visible");
-		var xplaneFlip = jQuery('#xplaneFlip')[0]; 
+		$oldjQuery('#xplane').css("visibility", "hidden");
+		$oldjQuery('#xplane_on').css("visibility", "visible");
+		var xplaneFlip = $oldjQuery('#xplaneFlip')[0]; 
 		if(xplaneFlip.checked) presenter.setClippingX(-1);
 		else presenter.setClippingX(1);
 	}
 	else {
-		jQuery('#xplane_on').css("visibility", "hidden");
-		jQuery('#xplane').css("visibility", "visible");
+		$oldjQuery('#xplane_on').css("visibility", "hidden");
+		$oldjQuery('#xplane').css("visibility", "visible");
 		presenter.setClippingX(0);
 	}
 }
@@ -393,15 +393,15 @@ function sectionySwitch(on) {
   if(on === undefined) on = (presenter.getClippingY()==0);
 
 	if(on){
-		jQuery('#yplane').css("visibility", "hidden");
-		jQuery('#yplane_on').css("visibility", "visible");
-		var yplaneFlip = jQuery('#yplaneFlip')[0];
+		$oldjQuery('#yplane').css("visibility", "hidden");
+		$oldjQuery('#yplane_on').css("visibility", "visible");
+		var yplaneFlip = $oldjQuery('#yplaneFlip')[0];
 		if(yplaneFlip.checked) presenter.setClippingY(-1);
 		else presenter.setClippingY(1);
 	}
 	else {
-		jQuery('#yplane_on').css("visibility", "hidden");
-		jQuery('#yplane').css("visibility", "visible");
+		$oldjQuery('#yplane_on').css("visibility", "hidden");
+		$oldjQuery('#yplane').css("visibility", "visible");
 		presenter.setClippingY(0);
 	}
 }
@@ -410,21 +410,21 @@ function sectionzSwitch(on) {
   if(on === undefined) on = (presenter.getClippingZ()==0);
 
 	if(on){
-		jQuery('#zplane').css("visibility", "hidden");
-		jQuery('#zplane_on').css("visibility", "visible");
-		var zplaneFlip = jQuery('#zplaneFlip')[0];
+		$oldjQuery('#zplane').css("visibility", "hidden");
+		$oldjQuery('#zplane_on').css("visibility", "visible");
+		var zplaneFlip = $oldjQuery('#zplaneFlip')[0];
 		if(zplaneFlip.checked) presenter.setClippingZ(-1);
 		else presenter.setClippingZ(1);
 	}
 	else {
-		jQuery('#zplane_on').css("visibility", "hidden");
-		jQuery('#zplane').css("visibility", "visible");
+		$oldjQuery('#zplane_on').css("visibility", "hidden");
+		$oldjQuery('#zplane').css("visibility", "visible");
 		presenter.setClippingZ(0);
 	}
 }
 
 function fullscreenSwitch() {
-  if(jQuery('#full').css("visibility")=="visible"){
+  if($oldjQuery('#full').css("visibility")=="visible"){
     if (window.navigator.userAgent.indexOf('Trident/') < 0) enterFullscreen();
   }
   else{
@@ -433,8 +433,8 @@ function fullscreenSwitch() {
 }
 
 function enterFullscreen() {
-  jQuery('#full').css("visibility", "hidden");
-  jQuery('#full_on').css("visibility", "visible");
+  $oldjQuery('#full').css("visibility", "hidden");
+  $oldjQuery('#full_on').css("visibility", "visible");
 
   if (isIOS()) return; //IOS DEVICES CHECK
 
@@ -443,7 +443,7 @@ function enterFullscreen() {
   presenter._nativeResizable = presenter._resizable;
   presenter._resizable = true;
 
-  var viewer = jQuery('#3dhop')[0];
+  var viewer = $oldjQuery('#3dhop')[0];
   if (viewer.msRequestFullscreen) viewer.msRequestFullscreen();
   else if (viewer.mozRequestFullScreen) viewer.mozRequestFullScreen();
   else if (viewer.webkitRequestFullscreen) viewer.webkitRequestFullscreen();
@@ -452,8 +452,8 @@ function enterFullscreen() {
 }
 
 function exitFullscreen() {
-  jQuery('#full_on').css("visibility", "hidden");
-  jQuery('#full').css("visibility", "visible");
+  $oldjQuery('#full_on').css("visibility", "hidden");
+  $oldjQuery('#full').css("visibility", "visible");
 
   if (isIOS()) return; //IOS DEVICES CHECK
 
@@ -472,56 +472,56 @@ function measurementSwitch() {
   var on = presenter.isMeasurementToolEnabled();
 
   if(on){
-    jQuery('#measure').css("visibility", "hidden");
-    jQuery('#measure_on').css("visibility", "visible");
-    jQuery('#measurebox').css("visibility","visible");
-    jQuery('#draw-canvas').css("cursor","crosshair");
+    $oldjQuery('#measure').css("visibility", "hidden");
+    $oldjQuery('#measure_on').css("visibility", "visible");
+    $oldjQuery('#measurebox').css("visibility","visible");
+    $oldjQuery('#draw-canvas').css("cursor","crosshair");
   }
   else{
     if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
     else if (document.selection && document.selection.createRange()!='') document.selection.empty();
-    jQuery('#measure_on').css("visibility", "hidden");
-    jQuery('#measure').css("visibility", "visible");
-    jQuery('#measurebox').css("visibility","hidden");
-    jQuery('#measure-output').html("0.0");
-    if (!presenter.isAnyMeasurementEnabled()) jQuery('#draw-canvas').css("cursor","default");
+    $oldjQuery('#measure_on').css("visibility", "hidden");
+    $oldjQuery('#measure').css("visibility", "visible");
+    $oldjQuery('#measurebox').css("visibility","hidden");
+    $oldjQuery('#measure-output').html("0.0");
+    if (!presenter.isAnyMeasurementEnabled()) $oldjQuery('#draw-canvas').css("cursor","default");
   }
 }
 
 // +++ INTERFACE POSITIONING FUNCTIONS +++ //
 
 function moveToolbar(l,t) {
-	jQuery('#toolbar').css('left', l);
-	jQuery('#toolbar').css('top', t);
+	$oldjQuery('#toolbar').css('left', l);
+	$oldjQuery('#toolbar').css('top', t);
 	anchorPanels();
 }
 
 function movePickpointbox(l,t) {
-	jQuery('#pickpoint-box').css('left', l);
-	jQuery('#pickpoint-box').css('top', t);
+	$oldjQuery('#pickpoint-box').css('left', l);
+	$oldjQuery('#pickpoint-box').css('top', t);
 }
 
 function moveMeasurementbox(l,t) {
-	jQuery('#measure-box').css('left', l);
-	jQuery('#measure-box').css('top', t);
+	$oldjQuery('#measure-box').css('left', l);
+	$oldjQuery('#measure-box').css('top', t);
 }
 
 function moveSectionsbox(l,t) {
-	jQuery('#sections-box').css('left', l);
-	jQuery('#sections-box').css('top', t);
+	$oldjQuery('#sections-box').css('left', l);
+	$oldjQuery('#sections-box').css('top', t);
 }
 
 /*DEPRECATED*/
 function moveMeasurebox(r,t) {
-  jQuery('#measurebox').css('right', r);
-  jQuery('#measurebox').css('top', t);
+  $oldjQuery('#measurebox').css('right', r);
+  $oldjQuery('#measurebox').css('top', t);
 }
 
 function resizeCanvas(w,h) {
-  jQuery('#draw-canvas').attr('width', w);
-  jQuery('#draw-canvas').attr('height',h);
-  jQuery('#3dhop').css('width', w);
-  jQuery('#3dhop').css('height', h);
+  $oldjQuery('#draw-canvas').attr('width', w);
+  $oldjQuery('#draw-canvas').attr('height',h);
+  $oldjQuery('#3dhop').css('width', w);
+  $oldjQuery('#3dhop').css('height', h);
 
   if (!presenter) return;
 
@@ -534,20 +534,20 @@ function resizeCanvas(w,h) {
 }
 
 function anchorPanels() {
-	if (jQuery('#pickpoint-box')[0] && jQuery('#pick')[0]) 
+	if ($oldjQuery('#pickpoint-box')[0] && $oldjQuery('#pick')[0]) 
 	{
-		jQuery('#pickpoint-box').css('left', (jQuery('#pick').position().left + jQuery('#pick').width() + jQuery('#toolbar').position().left + 5));
-		jQuery('#pickpoint-box').css('top', (jQuery('#pick').position().top + jQuery('#toolbar').position().top));
+		$oldjQuery('#pickpoint-box').css('left', ($oldjQuery('#pick').position().left + $oldjQuery('#pick').width() + $oldjQuery('#toolbar').position().left + 5));
+		$oldjQuery('#pickpoint-box').css('top', ($oldjQuery('#pick').position().top + $oldjQuery('#toolbar').position().top));
 	}
-	if (jQuery('#measure-box')[0] && jQuery('#measure')[0])
+	if ($oldjQuery('#measure-box')[0] && $oldjQuery('#measure')[0])
 	{
-		jQuery('#measure-box').css('left', (jQuery('#measure').position().left + jQuery('#measure').width() + jQuery('#toolbar').position().left + 5));
-		jQuery('#measure-box').css('top', (jQuery('#measure').position().top + jQuery('#toolbar').position().top));
+		$oldjQuery('#measure-box').css('left', ($oldjQuery('#measure').position().left + $oldjQuery('#measure').width() + $oldjQuery('#toolbar').position().left + 5));
+		$oldjQuery('#measure-box').css('top', ($oldjQuery('#measure').position().top + $oldjQuery('#toolbar').position().top));
 	}
-	if (jQuery('#sections-box')[0] && jQuery('#sections')[0]) 
+	if ($oldjQuery('#sections-box')[0] && $oldjQuery('#sections')[0]) 
 	{
-		jQuery('#sections-box').css('left', (jQuery('#sections').position().left + jQuery('#sections').width() + jQuery('#toolbar').position().left + 5));
-		jQuery('#sections-box').css('top', (jQuery('#sections').position().top + jQuery('#toolbar').position().top));
+		$oldjQuery('#sections-box').css('left', ($oldjQuery('#sections').position().left + $oldjQuery('#sections').width() + $oldjQuery('#toolbar').position().left + 5));
+		$oldjQuery('#sections-box').css('top', ($oldjQuery('#sections').position().top + $oldjQuery('#toolbar').position().top));
 	}
 }
 
