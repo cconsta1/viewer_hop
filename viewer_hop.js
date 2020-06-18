@@ -10,7 +10,7 @@
                    "trackball_rail.js", "trackball_sphere.js", "meco.js", "trackball_turntable.js", 
                    "ply.js", "spidergl.js", "presenter.js", "init.js", "jquery.js"];
 
-   for (index = 0; index < scripts.length; index++) 
+    for (index = 0; index < scripts.length; index++) 
     {
       var s = document.createElement("script");
       s.type = "text/javascript";
@@ -39,7 +39,7 @@
        style: 'background-image: url("/assets/javascripts/previewers/examples/skins/backgrounds/light.jpg")'
     }));
 
-  /*  document.write( '<script type=\"text/javascript\">\n' );
+    document.write( '<script type=\"text/javascript\">\n' );
     document.write( 'var presenter = null;\n' );
     document.write( '\n' );
     document.write( 'function setup3dhop() { \n' );
@@ -61,10 +61,10 @@
     document.write( 'setup3dhop();\n' );
     document.write( '});\n' );
     document.write( '</script>' );
-*/
+
 
     
-    $(useTab).append("<script type='text/javascript'>" +    
+    /*$(useTab).append("<script type='text/javascript'>" +    
       "var presenter = null;" +
 
       "function setup3dhop() {" +
@@ -84,6 +84,6 @@
          "resizeCanvas(600,600);" +
         "});" +   
       
-       "</script>");
+       "</script>");*/
 
 }(jQuery, Configuration));
