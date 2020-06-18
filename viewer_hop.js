@@ -61,29 +61,5 @@
     document.write( 'setup3dhop();\n' );
     document.write( '});\n' );
     document.write( '</script>' );
-
-
     
-    /*$(useTab).append("<script type='text/javascript'>" +    
-      "var presenter = null;" +
-
-      "function setup3dhop() {" +
-      "presenter = new Presenter('draw-canvas');" + 
-
-      "presenter.setScene({" +
-     		"meshes: {" +
-			"'Gargoyle' : { url: '/assets/javascripts/previewers/examples/models/singleres/gargo.ply' }" +
-		"}" +
-	"});" +
-
-       "}" +
-
-       "$oldjQuery(document).ready(function($oldjQuery){" +                                                                                      
-         "init3dhop();" +                                                                                              
-         "setup3dhop();" +                                                                                             
-         "resizeCanvas(600,600);" +
-        "});" +   
-      
-       "</script>");*/
-
 }(jQuery, Configuration));
