@@ -20,9 +20,9 @@
 
    $(useTab).append( "1st loaded jQuery version ($): " + $.fn.jquery + "<br>" );
 
-   $(useTab).append('<script>var $oldjQuery = $.noConflict(true);</script>')               
+   $(useTab).append('<script>var jQuery = $.noConflict(true);</script>')               
 
-   $(useTab).append( "2nd loaded jQuery version ($): " + $oldjQuery.fn.jquery + "<br>" );
+   $(useTab).append( "2nd loaded jQuery version ($): " + jQuery.fn.jquery + "<br>" );
 
    $(useTab).append($('<div/>', {
         id: '3dhop',
@@ -55,11 +55,11 @@
     document.write( '});\n' );
     document.write( '}\n' );
     document.write( '\n' );
-    document.write( '$oldjQuery(document).ready(function(){\n' );
+    document.write( 'jQuery(document).ready(function(){\n' );
     document.write( 'init3dhop();\n' );
     document.write( '\n' );
     document.write( 'setup3dhop();\n' );
     document.write( '});\n' );
     document.write( '</script>' );
     
-}(jQuery, Configuration));
+}($, Configuration));
