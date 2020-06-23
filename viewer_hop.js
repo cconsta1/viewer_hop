@@ -6,23 +6,19 @@
 
     $(useTab).append('<link rel="stylesheet" type="text/css" href="/assets/javascripts/previewers/examples/stylesheet/3dhop.css">');
 
-    var scripts = ["corto.js", "nexus.js", "trackball_pantilt.js", "trackball_turntable_pan.js", 
-                   "trackball_rail.js", "trackball_sphere.js", "meco.js", "trackball_turntable.js", 
-                   "ply.js", "spidergl.js", "presenter.js", "init.js", "jquery.js"];
+    var scripts = ["spidergl.js", "presenter.js", "nexus.js", "ply.js", "trackball_sphere.js",
+                   "trackball_turntable.js", "trackball_turntable_pan.js", "trackball_pantilt.js"];
 
     for (index = 0; index < scripts.length; index++) 
     {
+      //alert(index);
+
       var s = document.createElement("script");
       s.type = "text/javascript";
       s.src = Configuration.previewer +  "/examples/js/" + scripts[index];
       $(useTab).append(s);
     }
 
-   $(useTab).append( "1st loaded jQuery version ($): " + $.fn.jquery + "<br>" );
-
-   $(useTab).append('<script>var jQuery = $.noConflict(true);</script>')               
-
-   $(useTab).append( "2nd loaded jQuery version ($): " + jQuery.fn.jquery + "<br>" );
 
    $(useTab).append($('<div/>', {
         id: '3dhop',
@@ -39,27 +35,35 @@
        style: 'background-image: url("/assets/javascripts/previewers/examples/skins/backgrounds/light.jpg")'
     }));
 
-    document.write( '<script type=\"text/javascript\">\n' );
-    document.write( 'var presenter = null;\n' );
-    document.write( '\n' );
-    document.write( 'function setup3dhop() { \n' );
-    document.write( '	presenter = new Presenter(\"draw-canvas\");\n' );
-    document.write( '\n' );
-    document.write( '	presenter.setScene({\n' );
-    document.write( '		meshes: {\n' );
-    document.write( '			\"Gargoyle\" : { url: \"/assets/javascripts/previewers/examples/models/singleres/gargo.ply\" }\n' );
-    document.write( '		},\n' );
-    document.write( '		modelInstances : {\n' );
-    document.write( '			\"Model1\" : { mesh : \"Gargoyle\" }\n' );
-    document.write( '}\n' );
-    document.write( '});\n' );
-    document.write( '}\n' );
-    document.write( '\n' );
-    document.write( 'jQuery(document).ready(function(){\n' );
-    document.write( 'init3dhop();\n' );
-    document.write( '\n' );
-    document.write( 'setup3dhop();\n' );
-    document.write( '});\n' );
-    document.write( '</script>' );
+
+    $(useTab).append("HELLOOOOOOOOOOOOOOOOOOOOO");  
+
+    setup3dhop();     
+
+    $(useTab).append("HELLOOOOOOOOOOOOOOOOOOOOO");  
+
+    var presenter = null;
+
+    function setup3dhop() {
+    presenter = new Presenter("draw-canvas");
+
+
+    alert("Before");
+
+   //presenter.setScene({});
+        //      meshes: {
+          //            "mesh_1" : { url: "/assets/javascripts/previewers/examples/models/gargo.nxz" }
+            //  },
+      //        modelInstances : {
+       //              "instance_1" : { mesh : "mesh_1" }
+       //       }
+     // });
+      
     
-}($, Configuration));
+    alert("After");
+    }
+
+
+
+
+}(jQuery, Configuration));
