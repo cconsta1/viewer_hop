@@ -214,3 +214,4 @@ else if (typeof define === 'function' && define['amd'])
 	});
 else if (typeof exports === 'object')
 	exports["CortoDecoder"] = CortoDecoder;
+

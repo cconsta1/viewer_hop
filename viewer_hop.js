@@ -11,14 +11,11 @@
 
     for (index = 0; index < scripts.length; index++) 
     {
-      //alert(index);
-
       var s = document.createElement("script");
       s.type = "text/javascript";
       s.src = Configuration.previewer +  "/examples/js/" + scripts[index];
       $(useTab).append(s);
     }
-
 
    $(useTab).append($('<div/>', {
         id: '3dhop',
@@ -35,35 +32,28 @@
        style: 'background-image: url("/assets/javascripts/previewers/examples/skins/backgrounds/light.jpg")'
     }));
 
+    $(useTab).append('<script> \n' +
+    'var presenter = null; \n \n' +
 
-    $(useTab).append("HELLOOOOOOOOOOOOOOOOOOOOO");  
+    'function setup3dhop() { \n' +
+	 'presenter = new Presenter("draw-canvas");  \n' +
 
-    setup3dhop();     
+	  'presenter.setScene({ \n' +
 
-    $(useTab).append("HELLOOOOOOOOOOOOOOOOOOOOO");  
+		  'meshes: { \n' +
+			  '"mesh_1" : { url: "/assets/javascripts/previewers/examples/models/gargo.nxz" } \n' +
+		  '}, \n' +
+		  'modelInstances : { \n' +
+			  '"instance_1" : { mesh : "mesh_1" } \n' +
+		  '} \n' +
+	  '}); \n' +
+    '}; \n' + 
+  
+    'setup3dhop(); \n' +
 
-    var presenter = null;
-
-    function setup3dhop() {
-    presenter = new Presenter("draw-canvas");
-
-
-    alert("Before");
-
-   //presenter.setScene({});
-        //      meshes: {
-          //            "mesh_1" : { url: "/assets/javascripts/previewers/examples/models/gargo.nxz" }
-            //  },
-      //        modelInstances : {
-       //              "instance_1" : { mesh : "mesh_1" }
-       //       }
-     // });
-      
-    
-    alert("After");
-    }
-
-
-
-
+    'document.getElementById(\'draw-canvas\').setAttribute(\'width\', document.body.clientWidth); \n' +
+    'document.getElementById(\'draw-canvas\').setAttribute(\'height\', document.body.clientHeight); \n' +
+    '</script>'
+    );
+  
 }(jQuery, Configuration));

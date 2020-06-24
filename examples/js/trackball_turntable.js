@@ -21,6 +21,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * Constructs a TurntableTrackball object.
  * @class Interactor which implements a Turntable controller with bounds.
  */
+
+//const SGL_TRACKBALL_NO_ACTION = 0;                                                        
+//const SGL_TRACKBALL_ROTATE    = 1;                                                        
+//const SGL_TRACKBALL_PAN       = 2;                                                        
+//const SGL_TRACKBALL_DOLLY     = 3;                                                        
+//const SGL_TRACKBALL_SCALE     = 4;  
+
+
+
 function TurnTableTrackball() {
 }
 
@@ -352,3 +361,4 @@ TurnTableTrackball.prototype = {
 	}
 };
 /***********************************************************************/
+

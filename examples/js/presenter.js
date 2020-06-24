@@ -33,15 +33,18 @@ const HOP_DEFAULTLIGHT        = [0, 0, -1];
 // default points size
 const HOP_DEFAULTPOINTSIZE    = 1.0;
 // sgltrackball
-const SGL_TRACKBALL_NO_ACTION = 0;
-const SGL_TRACKBALL_ROTATE    = 1;
-const SGL_TRACKBALL_PAN       = 2;
-const SGL_TRACKBALL_DOLLY     = 3;
-const SGL_TRACKBALL_SCALE     = 4;
+var SGL_TRACKBALL_NO_ACTION = 0;
+var SGL_TRACKBALL_ROTATE    = 1;
+var SGL_TRACKBALL_PAN       = 2;
+var SGL_TRACKBALL_DOLLY     = 3;
+var SGL_TRACKBALL_SCALE     = 4;
 
 Presenter = function (canvas) {
 	this._supportsWebGL = sglHandleCanvas(canvas, this, { stencil: true });
 	console.log("3DHOP version: " + this.version);
+
+        //debug
+        //alert("3DHOP version: " + this.version);
 };
 
 Presenter.prototype = {
@@ -4174,3 +4177,4 @@ isInstanceLightingEnabled : function (tag) {
 }
 
 }; // Presenter.prototype END
+

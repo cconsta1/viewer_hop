@@ -1321,3 +1321,4 @@ return { Mesh: Mesh, Renderer: Instance, Renderable: Instance, Instance:Instance
 	setTargetError:setTargetError, setMinFps: setMinFps, setMaxCacheSize:setMaxCacheSize, getTargetError:getTargetError, getMinFps: getMinFps, getMaxCacheSize:getMaxCacheSize };
 
 }();
+
