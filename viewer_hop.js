@@ -7,7 +7,7 @@
     $(useTab).append('<link rel="stylesheet" type="text/css" href="/assets/javascripts/previewers/examples/stylesheet/3dhop.css">');
 
     var scripts = ["spidergl.js", "presenter.js", "nexus.js", "ply.js", "trackball_sphere.js",
-                   "trackball_turntable.js", "trackball_turntable_pan.js", "trackball_pantilt.js"];
+                   "trackball_turntable.js", "trackball_turntable_pan.js", "trackball_pantilt.js", "init.js"];
 
     for (index = 0; index < scripts.length; index++) 
     {
@@ -32,6 +32,9 @@
        style: 'background-image: url("/assets/javascripts/previewers/examples/skins/backgrounds/light.jpg")'
     }));
 
+    //alert(typeof(referenceUrl));
+    //alert(referenceUrl);                                                                                                   
+ 
     $(useTab).append('<script> \n' +
     'var presenter = null; \n \n' +
 
@@ -41,15 +44,19 @@
 	  'presenter.setScene({ \n' +
 
 		  'meshes: { \n' +
-			  '"mesh_1" : { url: "/assets/javascripts/previewers/examples/models/gargo.nxz" } \n' +
+			  '"mesh_1" : { url: "/assets/javascripts/previewers/examples/models/singleres/wing.ply" } \n' +
 		  '}, \n' +
 		  'modelInstances : { \n' +
 			  '"instance_1" : { mesh : "mesh_1" } \n' +
 		  '} \n' +
 	  '}); \n' +
     '}; \n' + 
+
+    'init3dhop(); \n' +
   
     'setup3dhop(); \n' +
+
+    'resizeCanvas(640,480); \n' +
 
     'document.getElementById(\'draw-canvas\').setAttribute(\'width\', document.body.clientWidth); \n' +
     'document.getElementById(\'draw-canvas\').setAttribute(\'height\', document.body.clientHeight); \n' +
