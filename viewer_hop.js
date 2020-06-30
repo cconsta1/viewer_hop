@@ -4,6 +4,11 @@
     var confId = Configuration.id;
     var fileId = Configuration.fileid;
 
+    for (const property in Configuration) 
+    {
+      alert(`${property}: ${Configuration[property]}`);
+    }
+
     $(useTab).append('<link rel="stylesheet" type="text/css" href="/assets/javascripts/previewers/hop/stylesheet/3dhop.css">');
 
     var scripts = ["spidergl.js", "presenter.js", "nexus.js", "ply.js", "trackball_sphere.js",
@@ -31,9 +36,6 @@
        id: 'draw-canvas',
        style: 'background-image: url("/assets/javascripts/previewers/hop/skins/backgrounds/light.jpg")'
     }));
-
-    //alert(typeof(referenceUrl));
-    //alert(referenceUrl);                                                                                                   
  
     $(useTab).append('<script> \n' +
     'var presenter = null; \n \n' +
@@ -44,7 +46,7 @@
 	  'presenter.setScene({ \n' +
 
 		  'meshes: { \n' +
-			  '"mesh_1" : { url: "/assets/javascripts/previewers/hop/models/singleres/wing.ply" } \n' +
+			  "\"mesh_1\" : { url: " + "\"" + referenceUrl + "\"" + "} \n" +
 		  '}, \n' +
 		  'modelInstances : { \n' +
 			  '"instance_1" : { mesh : "mesh_1" } \n' +
