@@ -52,6 +52,7 @@
    $("#toolbar").append("<img id='zoomout' title='Zoom Out'  src='/assets/javascripts/previewers/hop/skins/dark/zoomout.png'/><br/>");
    $("#toolbar").append("<img id='light_on' title='Disable Light Control'  src='/assets/javascripts/previewers/hop/skins/dark/lightcontrol_on.png' style='position:absolute; visibility:hidden;'/>");   
    $("#toolbar").append("<img id='light' title='Enable Light Control'  src='/assets/javascripts/previewers/hop/skins/dark/lightcontrol.png'/><br/>");
+   $("#toolbar").append("<img id='measure' title='Enable Measuring Tool'  src='/assets/javascripts/previewers/hop/skins/dark/measure.png'/><br/>"); 
    $("#toolbar").append("<img id='full_on' title='Exit Full Screen'  src='/assets/javascripts/previewers/hop/skins/dark/full_on.png' style='position:absolute; visibility:hidden;'/>");
    $("#toolbar").append("<img id='full' title='Full Screen'  src='/assets/javascripts/previewers/hop/skins/dark/full.png'/>"); 
 
