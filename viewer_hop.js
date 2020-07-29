@@ -37,9 +37,9 @@
     onmousedown: 'if (event.preventDefault) event.preventDefault()'
   }));
 
-  $("#3dhop").append($('<div/>', {                                                                                                                  
-    id: 'tdhlg'                                                                                                                                     
-  })); 
+  $("#3dhop").append($('<div/>', {
+    id: 'tdhlg'
+  }));
 
   $("#3dhop").append($('<div/>', {
     id: 'toolbar'
@@ -50,13 +50,13 @@
   $("#toolbar").append("<img id='zoomout' title='Zoom Out'  src='/assets/javascripts/previewers/hop/skins/dark/zoomout.png'/><br/>");
   $("#toolbar").append("<img id='light_on' title='Disable Light Control'  src='/assets/javascripts/previewers/hop/skins/dark/lightcontrol_on.png' style='position:absolute; visibility:hidden;'/>");
   $("#toolbar").append("<img id='light' title='Enable Light Control'  src='/assets/javascripts/previewers/hop/skins/dark/lightcontrol.png'/><br/>");
- 
+
   $("#toolbar").append("<img id='measure_on' title='Disable Measure Tool'  src='/assets/javascripts/previewers/hop/skins/dark/measure_on.png' style='position:absolute; visibility:hidden;'/>");
   $("#toolbar").append("<img id='measure' title='Enable Measure Tool'  src='/assets/javascripts/previewers/hop/skins/dark/measure.png'/><br/>");
 
   $("#toolbar").append("<img id='pick_on' title='Disable PickPoint Mode'  src='/assets/javascripts/previewers/hop/skins/dark/pick_on.png' style='position:absolute; visibility:hidden;'/>");
   $("#toolbar").append("<img id='pick' title='Enable PickPoint Mode'  src='/assets/javascripts/previewers/hop/skins/dark/pick.png'/><br/>");
-                                                                                              
+
 
   $("#toolbar").append("<img id='full_on' title='Exit Full Screen'  src='/assets/javascripts/previewers/hop/skins/dark/full_on.png' style='position:absolute; visibility:hidden;'/>");
   $("#toolbar").append("<img id='full' title='Full Screen'  src='/assets/javascripts/previewers/hop/skins/dark/full.png'/>");
@@ -68,32 +68,32 @@
 
   $("#measure-box").text("Measured length");
 
-  $("#measure-box").append($('<hr/>')); 
+  $("#measure-box").append($('<hr/>'));
 
   $("#measure-box").append($('<span/>', {
-      id: 'measure-output',
-      class : 'output-text',
-      onmousedown: 'event.stopPropagation()'
-   }));
-  
+    id: 'measure-output',
+    class: 'output-text',
+    onmousedown: 'event.stopPropagation()'
+  }));
+
   $("measure-output").text("0.0");
 
-  $('#3dhop').append($('<div/>', {                                                                                                          
-    id: 'pickpoint-box',                                                                                                                      
-    class: 'output-box'                                                                                                                     
-  }));                                                                                                                                      
-                                                                                                                                            
-  $("#pickpoint-box").text("XYZ picked point");                                                                                                
-                                                                                                                                            
-  $("#pickpoint-box").append($('<hr/>'));                                                                                                     
-                                                                                                                                            
-  $("#pickpoint-box").append($('<span/>', {                                                                                                   
-      id: 'pickpoint-output',                                                                                                                 
-      class : 'output-text',                                                                                                                
-      onmousedown: 'event.stopPropagation()'                                                                                                
-   }));                                                                                                                                     
-                                                                                                                                            
-  $("pickpoint-output").text("[ 0 , 0 , 0 ]");   
+  $('#3dhop').append($('<div/>', {
+    id: 'pickpoint-box',
+    class: 'output-box'
+  }));
+
+  $("#pickpoint-box").text("XYZ picked point");
+
+  $("#pickpoint-box").append($('<hr/>'));
+
+  $("#pickpoint-box").append($('<span/>', {
+    id: 'pickpoint-output',
+    class: 'output-text',
+    onmousedown: 'event.stopPropagation()'
+  }));
+
+  $("pickpoint-output").text("[ 0 , 0 , 0 ]");
 
   $("#3dhop").append($('<canvas/>', {
     id: 'draw-canvas',
@@ -107,8 +107,8 @@
 
     resizeCanvas(640, 480);
 
-    moveMeasurementbox(70,243); 
-    movePickpointbox(70,301);  
+    moveMeasurementbox(70, 243);
+    movePickpointbox(70, 301);
 
     //moveToolbar(20, 20);
   });
@@ -131,22 +131,22 @@ function setup3dhop(address) {
       "instance_1": { mesh: "mesh_1" }
     },
     trackball: {
-	type : TurntablePanTrackball,
-	trackOptions : {
-		startDistance: 1.3,
-		startPhi: 40.0,
-		startTheta: 20.0,
-		minMaxDist: [0.8, 2.5],
-		minMaxPhi: [-180, 180],
-		minMaxTheta: [-30.0, 70.0]
-	}
-	},
-	space: {
-		centerMode: "scene",
-		radiusMode: "scene"
-	}
+      type: TurntablePanTrackball,
+      trackOptions: {
+        startDistance: 1.3,
+        startPhi: 40.0,
+        startTheta: 20.0,
+        minMaxDist: [0.8, 2.5],
+        minMaxPhi: [-180, 180],
+        minMaxTheta: [-30.0, 70.0]
+      }
+    },
+    space: {
+      centerMode: "scene",
+      radiusMode: "scene"
+    }
   });
- 
+
   presenter._onEndMeasurement = onEndMeasure;
   presenter._onEndPickingPoint = onEndPick;
 }
@@ -158,10 +158,10 @@ function actionsToolbar(action) {
   else if (action == 'light' || action == 'light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); }
   else if (action == 'measure' || action == 'measure_on') { presenter.enableMeasurementTool(!presenter.isMeasurementToolEnabled()); measureSwitch(); }
   else if (action == 'full' || action == 'full_on') fullscreenSwitch();
-  else if(action=='pick' || action=='pick_on') { 
-    presenter.enablePickpointMode(!presenter.isPickpointModeEnabled()); pickpointSwitch(); } 
+  else if (action == 'pick' || action == 'pick_on') {
+    presenter.enablePickpointMode(!presenter.isPickpointModeEnabled()); pickpointSwitch();
+  }
 }
-
 
 function onEndMeasure(measure) {
   // measure.toFixed(2) sets the number of decimals when displaying the measure
@@ -170,13 +170,8 @@ function onEndMeasure(measure) {
 }
 
 function onEndPick(point) {
-    var x = point[0].toFixed(2);
-    var y = point[1].toFixed(2);
-    var z = point[2].toFixed(2);
-    $('#pickpoint-output').html("[ "+x+" , "+y+" , "+z+" ]");
+  var x = point[0].toFixed(2);
+  var y = point[1].toFixed(2);
+  var z = point[2].toFixed(2);
+  $('#pickpoint-output').html("[ " + x + " , " + y + " , " + z + " ]");
 }
-
-
-
-
-
