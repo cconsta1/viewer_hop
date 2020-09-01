@@ -97,7 +97,7 @@
 
   $("#3dhop").append($('<canvas/>', {
     id: 'draw-canvas',
-    style: 'background-image: url("/assets/javascripts/previewers/hop/skins/backgrounds/grey_gradient.jpg")'
+    style: 'background-image: url("/assets/javascripts/previewers/hop/skins/backgrounds/black.jpg")'
   }));
 
   $(document).ready(function () {
