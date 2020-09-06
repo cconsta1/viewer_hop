@@ -3,7 +3,8 @@
   var referenceUrl = Configuration.url;
   var confId = Configuration.id;
   var fileId = Configuration.fileid;
-
+  var previewer = Configuration.previewer;
+  
   // print all attributes of Configuration object
 
   /*for (const property in Configuration) 
@@ -13,7 +14,7 @@
 
   // add 3dhop.css to previewer
 
-  $(useTab).append('<link rel="stylesheet" type="text/css" href="/assets/javascripts/previewers/hop/stylesheet/3dhop.css">');
+  $(useTab).append('<link rel="stylesheet" type="text/css" href="'+ previewer +'/hop/stylesheet/3dhop.css">');
 
   // scripts  holds all the  3dhop files
 
@@ -25,7 +26,7 @@
   for (index = 0; index < scripts.length; index++) {
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = Configuration.previewer + "/hop/js/" + scripts[index];
+    s.src = previewer + "/hop/js/" + scripts[index];
     $(useTab).append(s);
   }
 
@@ -45,21 +46,21 @@
     id: 'toolbar'
   }));
 
-  $("#toolbar").append("<img id='home' title='Home'  src='/assets/javascripts/previewers/hop/skins/dark/home.png'/><br/>");
-  $("#toolbar").append("<img id='zoomin' title='Zoom In'  src='/assets/javascripts/previewers/hop/skins/dark/zoomin.png'/><br/>");
-  $("#toolbar").append("<img id='zoomout' title='Zoom Out'  src='/assets/javascripts/previewers/hop/skins/dark/zoomout.png'/><br/>");
-  $("#toolbar").append("<img id='light_on' title='Disable Light Control'  src='/assets/javascripts/previewers/hop/skins/dark/lightcontrol_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='light' title='Enable Light Control'  src='/assets/javascripts/previewers/hop/skins/dark/lightcontrol.png'/><br/>");
+  $("#toolbar").append("<img id='home' title='Home'  src='"+ previewer +"/hop/skins/dark/home.png'/><br/>");
+  $("#toolbar").append("<img id='zoomin' title='Zoom In'  src='"+ previewer +"/hop/skins/dark/zoomin.png'/><br/>");
+  $("#toolbar").append("<img id='zoomout' title='Zoom Out'  src='"+ previewer +"/hop/skins/dark/zoomout.png'/><br/>");
+  $("#toolbar").append("<img id='light_on' title='Disable Light Control'  src='"+ previewer +"/hop/skins/dark/lightcontrol_on.png' style='position:absolute; visibility:hidden;'/>");
+  $("#toolbar").append("<img id='light' title='Enable Light Control'  src='"+ previewer +"/hop/skins/dark/lightcontrol.png'/><br/>");
  
-  $("#toolbar").append("<img id='measure_on' title='Disable Measure Tool'  src='/assets/javascripts/previewers/hop/skins/dark/measure_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='measure' title='Enable Measure Tool'  src='/assets/javascripts/previewers/hop/skins/dark/measure.png'/><br/>");
+  $("#toolbar").append("<img id='measure_on' title='Disable Measure Tool'  src='"+ previewer +"/hop/skins/dark/measure_on.png' style='position:absolute; visibility:hidden;'/>");
+  $("#toolbar").append("<img id='measure' title='Enable Measure Tool'  src='"+ previewer +"/hop/skins/dark/measure.png'/><br/>");
 
-  $("#toolbar").append("<img id='pick_on' title='Disable PickPoint Mode'  src='/assets/javascripts/previewers/hop/skins/dark/pick_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='pick' title='Enable PickPoint Mode'  src='/assets/javascripts/previewers/hop/skins/dark/pick.png'/><br/>");
+  $("#toolbar").append("<img id='pick_on' title='Disable PickPoint Mode'  src='"+ previewer +"/hop/skins/dark/pick_on.png' style='position:absolute; visibility:hidden;'/>");
+  $("#toolbar").append("<img id='pick' title='Enable PickPoint Mode'  src='"+ previewer +"/hop/skins/dark/pick.png'/><br/>");
                                                                                               
 
-  $("#toolbar").append("<img id='full_on' title='Exit Full Screen'  src='/assets/javascripts/previewers/hop/skins/dark/full_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='full' title='Full Screen'  src='/assets/javascripts/previewers/hop/skins/dark/full.png'/>");
+  $("#toolbar").append("<img id='full_on' title='Exit Full Screen'  src='"+ previewer +"/hop/skins/dark/full_on.png' style='position:absolute; visibility:hidden;'/>");
+  $("#toolbar").append("<img id='full' title='Full Screen'  src='"+ previewer +"/hop/skins/dark/full.png'/>");
 
   $('#3dhop').append($('<div/>', {
     id: 'measure-box',
@@ -97,7 +98,7 @@
 
   $("#3dhop").append($('<canvas/>', {
     id: 'draw-canvas',
-    style: 'background-image: url("/assets/javascripts/previewers/hop/skins/backgrounds/black.jpg")'
+    style: 'background-image: url("'+ previewer +'/hop/skins/backgrounds/black.jpg")'
   }));
 
   $(document).ready(function () {
@@ -175,8 +176,4 @@ function onEndPick(point) {
     var z = point[2].toFixed(2);
     $('#pickpoint-output').html("[ "+x+" , "+y+" , "+z+" ]");
 }
-
-
-
-
 
