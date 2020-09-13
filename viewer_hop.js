@@ -4,7 +4,23 @@
   var confId = Configuration.id;
   var fileId = Configuration.fileid;
   var previewer = Configuration.previewer;
-  
+
+  var fileName = $('#file-name-title').text().trim();
+  var fileNameExtension = fileName.substr(fileName.length - 3); 
+  var fileType;
+
+  if(fileNameExtension == "ply"){
+    fileType = "ply";
+  }
+  else if (fileNameExtension == "nxz"){
+    fileType = "nexus";
+  }
+
+  //alert(fileName);
+  //alert(typeof(fileName));
+  //alert(fileNameExtension);
+  //alert(fileType);
+
   // print all attributes of Configuration object
 
   /*for (const property in Configuration) 
@@ -56,8 +72,7 @@
   $("#toolbar").append("<img id='measure' title='Enable Measure Tool'  src='"+ previewer +"/hop/skins/dark/measure.png'/><br/>");
 
   $("#toolbar").append("<img id='pick_on' title='Disable PickPoint Mode'  src='"+ previewer +"/hop/skins/dark/pick_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='pick' title='Enable PickPoint Mode'  src='"+ previewer +"/hop/skins/dark/pick.png'/><br/>");
-                                                                                              
+  $("#toolbar").append("<img id='pick' title='Enable PickPoint Mode'  src='"+ previewer +"/hop/skins/dark/pick.png'/><br/>");                                                                                              
 
   $("#toolbar").append("<img id='full_on' title='Exit Full Screen'  src='"+ previewer +"/hop/skins/dark/full_on.png' style='position:absolute; visibility:hidden;'/>");
   $("#toolbar").append("<img id='full' title='Full Screen'  src='"+ previewer +"/hop/skins/dark/full.png'/>");
@@ -104,7 +119,7 @@
   $(document).ready(function () {
     init3dhop();
 
-    setup3dhop(referenceUrl);
+    setup3dhop(referenceUrl, fileType);
 
     resizeCanvas(640, 480);
 
@@ -118,14 +133,14 @@
 
 var presenter = null;
 
-function setup3dhop(address) {
+function setup3dhop(address, fileType) {
   presenter = new Presenter("draw-canvas");
 
   presenter.setScene({
     meshes: {
       "mesh_1": {
         url: address,
-        mType: "ply"
+        mType: fileType
       }
     },
     modelInstances: {
@@ -162,7 +177,6 @@ function actionsToolbar(action) {
   else if(action=='pick' || action=='pick_on') { 
     presenter.enablePickpointMode(!presenter.isPickpointModeEnabled()); pickpointSwitch(); } 
 }
-
 
 function onEndMeasure(measure) {
   // measure.toFixed(2) sets the number of decimals when displaying the measure
