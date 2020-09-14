@@ -1,3 +1,19 @@
+/****************************************************************
+  @file viewer_hop.js
+
+  Loads the 3DHOP library and uses methods and functions to 
+  load 3D models in point cloud (*.ply) and nexus (*.nxz) form
+   into a clowder repository.   
+ 
+  Language: JavaScript
+  
+  Chrysovalantis Constantinou
+  The Cyprus Institute
+
+  + 09/14/20 (cc): Created.
+
+****************************************************************/
+
 (function ($, Configuration) {
   var useTab = Configuration.tab;
   var referenceUrl = Configuration.url;
@@ -23,7 +39,8 @@
 
   // print all attributes of Configuration object
 
-  /*for (const property in Configuration) {
+  /*for (const property in Configuration) 
+  {
     alert(`${property}: ${Configuration[property]}`);
   }*/
 
@@ -190,3 +207,4 @@ function onEndPick(point) {
   var z = point[2].toFixed(2);
   $('#pickpoint-output').html("[ " + x + " , " + y + " , " + z + " ]");
 }
+
