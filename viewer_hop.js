@@ -11,6 +11,8 @@
   The Cyprus Institute
 
   + 09/14/20 (cc): Created.
+  + 10/14/20 (cc): Changing the source of the 3DHOP files
+                   and load them online
 
 ****************************************************************/
 
@@ -46,7 +48,9 @@
 
   // add 3dhop.css to previewer
 
-  $(useTab).append('<link rel="stylesheet" type="text/css" href="' + previewer + '/hop/stylesheet/3dhop.css">');
+ $(useTab).append('<link rel="stylesheet" type="text/css" href="http://vcg.isti.cnr.it/3dhop/distribution/stylesheet/3dhop.css">');
+
+  //$(useTab).append('<link rel="stylesheet" type="text/css" href="' + previewer + '/hop/stylesheet/3dhop.css">');
 
   // load various 3dhop attributes (such as the background image) for 3dhop
 
@@ -64,9 +68,11 @@
     id: 'toolbar'
   }));
 
-  $("#toolbar").append("<img id='home' title='Home'  src='" + previewer + "/hop/skins/dark/home.png'/><br/>");
-  $("#toolbar").append("<img id='zoomin' title='Zoom In'  src='" + previewer + "/hop/skins/dark/zoomin.png'/><br/>");
-  $("#toolbar").append("<img id='zoomout' title='Zoom Out'  src='" + previewer + "/hop/skins/dark/zoomout.png'/><br/>");
+  $("#toolbar").append("<img id='home' title='Home'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/home.png'/><br/>");
+
+  $("#toolbar").append("<img id='zoomin' title='Zoom In'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/zoomin.png'/><br/>");                   
+  $("#toolbar").append("<img id='zoomout' title='Zoom Out'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/zoomout.png'/><br/>");
+
   $("#toolbar").append("<img id='light_on' title='Disable Light Control'  src='" + previewer + "/hop/skins/dark/lightcontrol_on.png' style='position:absolute; visibility:hidden;'/>");
   $("#toolbar").append("<img id='light' title='Enable Light Control'  src='" + previewer + "/hop/skins/dark/lightcontrol.png'/><br/>");
 
