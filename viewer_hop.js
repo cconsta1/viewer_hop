@@ -48,20 +48,6 @@
 
   $(useTab).append('<link rel="stylesheet" type="text/css" href="' + previewer + '/hop/stylesheet/3dhop.css">');
 
-  // scripts  holds all the  3dhop files
-
-  var scripts = ["spidergl.js", "presenter.js", "nexus.js", "ply.js", "trackball_sphere.js",
-    "trackball_turntable.js", "trackball_turntable_pan.js", "trackball_pantilt.js", "init.js"];
-
-  // load 3dhop into the current tab
-
-  for (index = 0; index < scripts.length; index++) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = previewer + "/hop/js/" + scripts[index];
-    $(useTab).append(s);
-  }
-
   // load various 3dhop attributes (such as the background image) for 3dhop
 
   $(useTab).append($('<div/>', {
@@ -129,8 +115,23 @@
 
   $("#3dhop").append($('<canvas/>', {
     id: 'draw-canvas',
-    style: 'background-image: url("' + previewer + '/hop/skins/backgrounds/black.jpg")'
+    style: 'background-image: url("http://vcg.isti.cnr.it/3dhop/distribution/skins/backgrounds/dark.jpg")' 
+   // style: 'background-image: url("' + previewer + '/hop/skins/backgrounds/white.jpg")'
   }));
+
+  // scripts  holds all the  3dhop files                                                                        
+                                                                                                                
+  var scripts = ["spidergl.js", "presenter.js", "nexus.js", "ply.js", "trackball_sphere.js",                    
+    "trackball_turntable.js", "trackball_turntable_pan.js", "trackball_pantilt.js", "init.js"];                 
+                                                                                                                
+  // load 3dhop into the current tab                                                                            
+                                                                                                                
+  for (index = 0; index < scripts.length; index++) {                                                            
+    var s = document.createElement("script");                                                                   
+    s.type = "text/javascript";                                                                                 
+    s.src = previewer + "/hop/js/" + scripts[index];                                                            
+    $(useTab).append(s);                                                                                        
+  }             
 
   $(document).ready(function () {
     init3dhop();
