@@ -129,27 +129,58 @@
 
   // load 3dhop into the current tab                                                                            
 
+  /****  for (index = 0; index < scripts.length; index++) {                                                            
+        var s = document.createElement("script");                                                                   
+        s.type = "text/javascript";                                                                                 
+        s.src = previewer + "/hop/js/" + scripts[index];                                                            
+        $(useTab).append(s);                                                                                        
+      }             
+
+   $(document).ready(function () {                                                                                                     
+    init3dhop();                                                                                                                        
+                                                                                                                                        
+    setup3dhop(referenceUrl, fileType);                                                                                                 
+                                                                                                                                        
+    resizeCanvas(640, 480);                                                                                                             
+                                                                                                                                        
+    moveMeasurementbox(70, 243);                                                                                                        
+    movePickpointbox(70, 301);                                                                                                          
+                                                                                                                                        
+    //moveToolbar(20, 20);                                                                                                              
+  });******/
+
+
   for (index = 0; index < scripts.length; index++) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = previewer + "/hop/js/" + scripts[index];
-    $(useTab).append(s);
+    scripts[index] = "http://vcg.isti.cnr.it/3dhop/distribution/js/" + scripts[index];
   }
 
-  $(document).ready(function () {
-    init3dhop();
+  getScripts(scripts, function () {
 
-    setup3dhop(referenceUrl, fileType);
+    $(document).ready(function () {
+      init3dhop();
 
-    resizeCanvas(640, 480);
+      setup3dhop(referenceUrl, fileType);
 
-    moveMeasurementbox(70, 243);
-    movePickpointbox(70, 301);
+      resizeCanvas(640, 480);
 
-    //moveToolbar(20, 20);
+      moveMeasurementbox(70, 243);
+      movePickpointbox(70, 301);
+
+      //moveToolbar(20, 20);                                                                                                            
+    });
+
   });
 
 }(jQuery, Configuration));
+
+function getScripts(scripts, callback) {
+  var progress = 0;
+  scripts.forEach(function (script) {
+    $.getScript(script, function () {
+      if (++progress == scripts.length) callback();
+    });
+  });
+}
 
 var presenter = null;
 
