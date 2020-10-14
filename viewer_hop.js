@@ -48,9 +48,7 @@
 
   // add 3dhop.css to previewer
 
- $(useTab).append('<link rel="stylesheet" type="text/css" href="http://vcg.isti.cnr.it/3dhop/distribution/stylesheet/3dhop.css">');
-
-  //$(useTab).append('<link rel="stylesheet" type="text/css" href="' + previewer + '/hop/stylesheet/3dhop.css">');
+  $(useTab).append('<link rel="stylesheet" type="text/css" href="http://vcg.isti.cnr.it/3dhop/distribution/stylesheet/3dhop.css">');
 
   // load various 3dhop attributes (such as the background image) for 3dhop
 
@@ -70,20 +68,20 @@
 
   $("#toolbar").append("<img id='home' title='Home'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/home.png'/><br/>");
 
-  $("#toolbar").append("<img id='zoomin' title='Zoom In'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/zoomin.png'/><br/>");                   
+  $("#toolbar").append("<img id='zoomin' title='Zoom In'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/zoomin.png'/><br/>");
   $("#toolbar").append("<img id='zoomout' title='Zoom Out'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/zoomout.png'/><br/>");
 
-  $("#toolbar").append("<img id='light_on' title='Disable Light Control'  src='" + previewer + "/hop/skins/dark/lightcontrol_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='light' title='Enable Light Control'  src='" + previewer + "/hop/skins/dark/lightcontrol.png'/><br/>");
+  $("#toolbar").append("<img id='light_on' title='Disable Light Control'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/lightcontrol_on.png' style='position:absolute; visibility:hidden;'/>");
+  $("#toolbar").append("<img id='light' title='Enable Light Control'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/lightcontrol.png'/><br/>");
 
-  $("#toolbar").append("<img id='measure_on' title='Disable Measure Tool'  src='" + previewer + "/hop/skins/dark/measure_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='measure' title='Enable Measure Tool'  src='" + previewer + "/hop/skins/dark/measure.png'/><br/>");
+  $("#toolbar").append("<img id='measure_on' title='Disable Measure Tool'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/measure_on.png' style='position:absolute; visibility:hidden;'/>");
+  $("#toolbar").append("<img id='measure' title='Enable Measure Tool'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/measure.png'/><br/>");
 
-  $("#toolbar").append("<img id='pick_on' title='Disable PickPoint Mode'  src='" + previewer + "/hop/skins/dark/pick_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='pick' title='Enable PickPoint Mode'  src='" + previewer + "/hop/skins/dark/pick.png'/><br/>");
+  $("#toolbar").append("<img id='pick_on' title='Disable PickPoint Mode'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/pick_on.png' style='position:absolute; visibility:hidden;'/>");
+  $("#toolbar").append("<img id='pick' title='Enable PickPoint Mode'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/pick.png'/><br/>");
 
-  $("#toolbar").append("<img id='full_on' title='Exit Full Screen'  src='" + previewer + "/hop/skins/dark/full_on.png' style='position:absolute; visibility:hidden;'/>");
-  $("#toolbar").append("<img id='full' title='Full Screen'  src='" + previewer + "/hop/skins/dark/full.png'/>");
+  $("#toolbar").append("<img id='full_on' title='Exit Full Screen'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/full_on.png' style='position:absolute; visibility:hidden;'/>");
+  $("#toolbar").append("<img id='full' title='Full Screen'  src='http://vcg.isti.cnr.it/3dhop/distribution/skins/dark/full.png'/>");
 
   $('#3dhop').append($('<div/>', {
     id: 'measure-box',
@@ -121,23 +119,22 @@
 
   $("#3dhop").append($('<canvas/>', {
     id: 'draw-canvas',
-    style: 'background-image: url("http://vcg.isti.cnr.it/3dhop/distribution/skins/backgrounds/dark.jpg")' 
-   // style: 'background-image: url("' + previewer + '/hop/skins/backgrounds/white.jpg")'
+    style: 'background-image: url("http://vcg.isti.cnr.it/3dhop/distribution/skins/backgrounds/dark.jpg")'
   }));
 
   // scripts  holds all the  3dhop files                                                                        
-                                                                                                                
-  var scripts = ["spidergl.js", "presenter.js", "nexus.js", "ply.js", "trackball_sphere.js",                    
-    "trackball_turntable.js", "trackball_turntable_pan.js", "trackball_pantilt.js", "init.js"];                 
-                                                                                                                
+
+  var scripts = ["spidergl.js", "presenter.js", "nexus.js", "ply.js", "trackball_sphere.js",
+    "trackball_turntable.js", "trackball_turntable_pan.js", "trackball_pantilt.js", "init.js"];
+
   // load 3dhop into the current tab                                                                            
-                                                                                                                
-  for (index = 0; index < scripts.length; index++) {                                                            
-    var s = document.createElement("script");                                                                   
-    s.type = "text/javascript";                                                                                 
-    s.src = previewer + "/hop/js/" + scripts[index];                                                            
-    $(useTab).append(s);                                                                                        
-  }             
+
+  for (index = 0; index < scripts.length; index++) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = previewer + "/hop/js/" + scripts[index];
+    $(useTab).append(s);
+  }
 
   $(document).ready(function () {
     init3dhop();
