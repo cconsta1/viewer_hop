@@ -124,58 +124,75 @@
 
   // scripts  holds all the  3dhop files                                                                        
 
-  var scripts = ["spidergl.js", "presenter.js", "nexus.js", "ply.js", "trackball_sphere.js",
-    "trackball_turntable.js", "trackball_turntable_pan.js", "trackball_pantilt.js", "init.js"];
+  var scripts = ["spidergl.js", "nexus.js", "ply.js", "trackball_sphere.js",
+    "trackball_turntable.js", "trackball_pantilt.js", "trackball_turntable_pan.js", "init.js", "presenter.js"];
 
-  // load 3dhop into the current tab                                                                            
-
-  /****  for (index = 0; index < scripts.length; index++) {                                                            
-        var s = document.createElement("script");                                                                   
-        s.type = "text/javascript";                                                                                 
-        s.src = previewer + "/hop/js/" + scripts[index];                                                            
-        $(useTab).append(s);                                                                                        
-      }             
-
-   $(document).ready(function () {                                                                                                     
-    init3dhop();                                                                                                                        
-                                                                                                                                        
-    setup3dhop(referenceUrl, fileType);                                                                                                 
-                                                                                                                                        
-    resizeCanvas(640, 480);                                                                                                             
-                                                                                                                                        
-    moveMeasurementbox(70, 243);                                                                                                        
-    movePickpointbox(70, 301);                                                                                                          
-                                                                                                                                        
-    //moveToolbar(20, 20);                                                                                                              
-  });******/
-
+  // append the http address where the files are located
 
   for (index = 0; index < scripts.length; index++) {
     scripts[index] = "http://vcg.isti.cnr.it/3dhop/distribution/js/" + scripts[index];
   }
 
-  getScripts(scripts, function () {
+  // load 3dhop into the current tab   (old version)                                                                         
 
-    $(document).ready(function () {
-      init3dhop();
+  /******for (index = 0; index < scripts.length; index++) {                                                            
+       var s = document.createElement("script");                                                                   
+       s.type = "text/javascript";                                                                                 
+       //s.src = previewer + "/hop/js/" + scripts[index];                                                            
+       s.src = scripts[index];
+       $(useTab).append(s); 
+     }             
 
-      setup3dhop(referenceUrl, fileType);
+  $(document).ready(function () {                                                                                                     
+   init3dhop();                                                                                                                        
+                                                                                                                                       
+   setup3dhop(referenceUrl, fileType);                                                                                                 
+                                                                                                                                       
+   resizeCanvas(640, 480);                                                                                                             
+                                                                                                                                       
+   moveMeasurementbox(70, 243);                                                                                                        
+   movePickpointbox(70, 301);                                                                                                          
+                                                                                                                                       
+   //moveToolbar(20, 20);                                                                                                              
+ });*****/
 
-      resizeCanvas(640, 480);
+  $.getScript(scripts[0], function () {
+    $.getScript(scripts[1], function () {
+      $.getScript(scripts[2], function () {
+        $.getScript(scripts[3], function () {
+          $.getScript(scripts[4], function () {
+            $.getScript(scripts[5], function () {
+              $.getScript(scripts[6], function () {
+                $.getScript(scripts[7], function () {
+                  $.getScript(scripts[8], function () {
 
-      moveMeasurementbox(70, 243);
-      movePickpointbox(70, 301);
+                    init3dhop();
 
-      //moveToolbar(20, 20);                                                                                                            
-    });
+                    setup3dhop(referenceUrl, fileType);
 
+                    resizeCanvas(640, 480);
+
+                    moveMeasurementbox(70, 243);
+                    movePickpointbox(70, 301);
+
+                  })
+                })
+              })
+            })
+          })
+        })
+      })
+    })
   });
 
 }(jQuery, Configuration));
 
 function getScripts(scripts, callback) {
+
   var progress = 0;
+
   scripts.forEach(function (script) {
+    //alert(script);
     $.getScript(script, function () {
       if (++progress == scripts.length) callback();
     });
@@ -242,4 +259,3 @@ function onEndPick(point) {
   var z = point[2].toFixed(2);
   $('#pickpoint-output').html("[ " + x + " , " + y + " , " + z + " ]");
 }
-
