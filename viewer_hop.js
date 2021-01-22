@@ -40,8 +40,6 @@
   //alert(fileNameExtension);
   //alert(fileType);
 
-  // Something else else
-
   // print all attributes of Configuration object
 
   /*for (const property in Configuration) 
@@ -50,12 +48,6 @@
   }*/
 
   // add 3dhop.css to previewer
-
-  //$(useTab).append('<link rel="stylesheet" type="text/css" href="https://3dhop.net/distribution/latest/stylesheet/3dhop.css">');
-
-  //let server_url = "https://3dhop.net/distribution/latest/";
-
-  //$(useTab).append('<link rel="stylesheet" type="text/css" href = server_url.concat("stylesheet/3dhop.css")>');
 
   $(useTab).append('<link rel="stylesheet" type="text/css" href = "https://3dhop.net/distribution/latest/stylesheet/3dhop.css">');
 
