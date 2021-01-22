@@ -40,6 +40,8 @@
   //alert(fileNameExtension);
   //alert(fileType);
 
+  // Something
+
   // print all attributes of Configuration object
 
   /*for (const property in Configuration) 
