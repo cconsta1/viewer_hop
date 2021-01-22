@@ -40,7 +40,7 @@
   //alert(fileNameExtension);
   //alert(fileType);
 
-  // Something
+  // Something else
 
   // print all attributes of Configuration object
 
